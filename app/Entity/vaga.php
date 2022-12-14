@@ -62,6 +62,19 @@ class Vaga
     }
 
     /**
+     * metodo responsavel por atualizar a vaga
+     * @return boolean
+     */
+    public function atualizar()
+    {
+        return (new Database('vagas'))->update('id =' . $this->id, [
+            'titulo'    => $this->titulo,
+            'descricao' => $this->descricao,
+            'ativo'     => $this->ativo,
+            'data'      => $this->data
+        ]);
+    }
+    /**
      * metodo responsavel por obter as vagas do banco de dados
      * @param string where
      * @param string order

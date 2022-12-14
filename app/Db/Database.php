@@ -132,4 +132,29 @@ class Database
 
         return  $this->execute($query);
     }
+
+    /**
+     * metodo responsavel por execultar atualizações no banco de dados 
+     * @param string $where
+     * @param array $values []field=> values
+     * @return integer ID inserido
+     */
+    public function update($where, $values)
+    {
+        //dados da query
+        $fields = array_keys($values);
+        $bind = array_pad([], count($fields), '?');
+
+        //MONTAR da query
+        // $query = 'UPDATE vagas SET titulo="titulo", descricao="descricao" WHERE id = 1';
+        $query = 'UPDATE ' . $this->table . ' SET ' . implode('=?,', $fields) . '=? WHERE ' . $where;
+
+
+
+        //executa o insert
+        $this->execute($query, array_values($values));
+
+        //retorna o id inserido
+        return true;
+    }
 }
