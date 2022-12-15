@@ -18,11 +18,7 @@
             <a href="index.php">
                 <button class="btn btn-success" type="button">Cancelar</button>
             </a>
-        </div>
-
-
-        <div class="form-group">
-            <button class="btn btn-danger">Excluir</button>
+            <button class="btn btn-danger" name="excluir" type="submit">Excluir</button>
         </div>
     </form>
 </main>

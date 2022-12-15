@@ -22,12 +22,9 @@ if (!$obVaga instanceof Vaga) {
 
 
 //VALIDAÇÃO DO POST
-if (isset($_POST['titulo'], $_POST['descricao'], $_POST['ativo'])) {
+if (isset($_POST['excluir'])) {
 
-    $obVaga->titulo    = $_POST['titulo'];
-    $obVaga->descricao = $_POST['descricao'];
-    $obVaga->ativo     = $_POST['ativo'];
-    $obVaga->atualizar();
+    $obVaga->excluir();
     header('location: index.php?status=success');
 }
 

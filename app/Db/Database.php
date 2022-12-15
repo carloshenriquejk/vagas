@@ -157,4 +157,17 @@ class Database
         //retorna o id inserido
         return true;
     }
+    /**
+     * metodo responsavel por excluir tabela no banco de dados 
+     * @param string $where
+     * @return boolean 
+     */
+    public function delete($where)
+    {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE ' . $where;
+
+        $this->execute($query);
+
+        return true;
+    }
 }

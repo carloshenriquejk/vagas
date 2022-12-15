@@ -1,5 +1,20 @@
 <?php
 
+$mensagem = '';
+if (isset($_GET['status'])) {
+    switch ($_GET['status']) {
+        case 'success':
+            $mensagem = ' <div class="alert alert-success">Ação Execultada com sucesso!</div>';
+            break;
+
+        case 'error':
+            $mensagem = ' <div class="alert alert-danger">Ação não Execultada!</div>';
+            break;
+    }
+}
+
+
+$resultados = '';
 foreach ($vagas as $vaga) {
     $resultados .= '<tr>
                       <td>' . $vaga->id . '</td>
@@ -17,8 +32,13 @@ foreach ($vagas as $vaga) {
                       </td>
                     </tr>';
 }
+
+$resultados = strlen($resultados) ? $resultados : '<tr>
+                                                   <td colpan="6" class="text-center"> NEnhuma vaga Encontrafa</td>
+                                                   </tr>';
 ?>
 <main>
+    <?= $mensagem ?>
     <section>
         <a href="cadastrar.php">
             <button class="btn btn-success">Nova vaga</button>
