@@ -143,7 +143,7 @@ class Database
     {
         //dados da query
         $fields = array_keys($values);
-        $bind = array_pad([], count($fields), '?');
+
 
         //MONTAR da query
         // $query = 'UPDATE vagas SET titulo="titulo", descricao="descricao" WHERE id = 1';
