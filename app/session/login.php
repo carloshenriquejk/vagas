@@ -39,6 +39,35 @@ class Login
         exit;
     }
 
+
+
+    /**
+     * metodo respomsavel por deslogar o usuario
+
+     */
+    public static function logout()
+    {
+        ///inicia a sessão 
+        self::init();
+
+        //remove a sessão de usuario
+        unset($_SESSION['usuario']);
+        //redireciona o usuario para o login
+        header('location: login.php');
+        exit;
+    }
+
+
+    public static function getUsuarioLogado()
+    {
+        //inicia a sessão
+        self::init();
+
+        //retorna os dados do usuariop
+        return self::isLogged() ? $_SESSION['usuario'] : null;
+    }
+
+
     /**
      * metodo respomsavel por verificar se o usuario está  logado 
      * @return boolean

@@ -15,6 +15,7 @@ $alertaCadastro = '';
 //validação do post
 if (isset($_POST['acao'])) {
     switch ($_POST['acao']) {
+
         case 'logar':
             //busca usuario por email
             $obusuario = Usuario::getUsuarioPorEmail($_POST['email']);
@@ -30,11 +31,22 @@ if (isset($_POST['acao'])) {
 
         case 'cadastrar':
             if (isset($_POST['nome'], $_POST['email'], $_POST['senha'])) {
+
+                //buscar usuario por e-mail
+                $obusuario = Usuario::getUsuarioPorEmail($_POST['email']);
+                if ($obusuario instanceof Usuario) {
+                    $alertaCadastro = "O e-mail digitado já está em uso";
+                    break;
+                }
+
+
+                //novo usuario
                 $obusuario = new Usuario;
                 $obusuario->nome = $_POST['nome'];
                 $obusuario->email = $_POST['email'];
                 $obusuario->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
                 $obusuario->cadastrar();
+                Login::login($obusuario);
             }
             break;
     }

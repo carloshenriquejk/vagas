@@ -1,3 +1,15 @@
+<?php
+
+use \app\session\Login;
+
+//DADOS DO USUARIO LOGADO
+$usuarioLogado = Login::getUsuarioLogado();
+
+//DETALHES DO USUARIO
+$usuario = $usuarioLogado ?
+    '<a href="logout.php" class="nav-link">Sair</a>' :
+    '<a href="login.php" class="nav-link">Entrar</a>';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -16,17 +28,15 @@
 <body class="bg-dark text-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">CRUD</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
-            aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbarsExample05">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">Home </span></a>
                 </li>
-
+                <li class="nav-item active">
+                    <?= $usuario ?>
+                </li>
             </ul>
         </div>
     </nav>
