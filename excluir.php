@@ -6,8 +6,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 use \App\Entity\Vaga;
 
-use App\sesion\Login;
 
+use App\session\Login;
 //obriga o usuario a  estar logado 
 Login::requireLogin();
 

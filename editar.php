@@ -2,7 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use App\sesion\Login;
+use App\session\Login;
 //obriga o usuario a  estar logado 
 Login::requireLogin();
 
